@@ -1,35 +1,33 @@
 import React, { Component } from 'react';
 import './App.css';
 
-class GridBoard extends React.Component {
-  render() {
-    return (
-      <div className = 'divMain'>
+function GridBoard (props) {
+  var boxes = ['box1', 'box2', 'box3', 'box4', 'box5', 'box6', 'box7', 'box8', 'box9'];
+  return (
+    <div className = 'divMain'>
       <div className='main'>
         <div className='top-row'>
-          <div onClick={this.props.clickBox1} className='one'> {this.props.box1}</div>
-          <div onClick={this.props.clickBox2} className='one'> {this.props.box2}</div>
-          <div onClick={this.props.clickBox3} className='one'> {this.props.box3}</div>
-          <div onClick={this.props.clickBox4} className='one'> {this.props.box4}</div>
-          <div onClick={this.props.clickBox5} className='one'> {this.props.box5}</div>
-          <div onClick={this.props.clickBox6} className='one'> {this.props.box6}</div>
-        </div>
-        <div className='bottom-row'>
-          <div onClick={this.props.clickBox7} className='one'> {this.props.box7}</div>
-          <div onClick={this.props.clickBox8} className='one'> {this.props.box8}</div>
-          <div onClick={this.props.clickBox9} className='one'> {this.props.box9}</div>
+          {boxes.map(function (boxId) {
+            return (
+              <div
+                key={boxId}
+                onClick={props.onBoxClick.bind(null, boxId)}
+                className='one'>
+                  {props[boxId]}
+              </div>
+            )
+          })}
         </div>
       </div>
-       <div className='player1'>
-          <div className='sm1'> Jax's Points: {this.props.playerOnePoints} </div>
-        </div>
-        <div className='sm1'> </div>
-       <div className='player2'><div className='sm2'> Pedro's Points: {this.props.playerTwoPoints}</div> </div>
-
-       </div>
-
-    )
-  }
+      <div className='player1'>
+        <div className='sm1'> Jax's Points: {props.playerOnePoints} </div>
+      </div>
+      <div className='sm1'> </div>
+      <div className='player2'>
+        <div className='sm2'> Pedro's Points: {props.playerTwoPoints}</div>
+      </div>
+     </div>
+  )
 }
 
 class UserInputs extends React.Component {
@@ -51,183 +49,25 @@ class UserInputs extends React.Component {
       playerTwoPoints: 0,
     }
 
-    this.box1 = this.box1.bind(this);
-    this.changePlayersTurn.bind(this);
-    this.box2 = this.box2.bind(this);
-    this.box3=this.box3.bind(this);
-    this.box4=this.box4.bind(this);
-    this.box5=this.box5.bind(this);
-    this.box6=this.box6.bind(this);
-    this.box7=this.box7.bind(this);
-    this.box8=this.box8.bind(this);
-    this.box9=this.box9.bind(this);
-    this.checkForWinner=this.checkForWinner.bind(this)
-    this.startOver=this.startOver.bind(this)
-    this.resetPoints=this.resetPoints.bind(this)
+    this.handleBoxClick = this.handleBoxClick.bind(this);
+    this.changePlayersTurn = this.changePlayersTurn.bind(this);
+    this.checkForWinner = this.checkForWinner.bind(this);
+    this.startOver = this.startOver.bind(this);
+    this.resetPoints = this.resetPoints.bind(this);
   }
-
-  box1() {
-    if (this.state.box1 !== '' || this.state.winner !== '') {
+  handleBoxClick(boxId) {
+    if (this.state[boxId] !== '' || this.state.winner !== '') {
       return
     }
 
-    if(this.state.playersTurn === 'player1'){
-      this.setState(function(){
-        return {
-          box1: 'x'
-        }
-      }, this.changePlayersTurn)
-    } else if(this.state.playersTurn === 'player2'){
-      this.setState(function(){
-        return {
-          box1: 'o'
-        }
-      }, this.changePlayersTurn)
-    }
-  }
-  box2() {
-    if (this.state.box2 !== '' || this.state.winner !=='') {
-      return
-    }
-    if(this.state.playersTurn === 'player1'){
-      this.setState(function(){
-        return {
-          box2: 'x'
-        }
-      }, this.changePlayersTurn)
-    } else if(this.state.playersTurn === 'player2'){
-      this.setState(function(){
-        return {
-          box2: 'o'
-        }
-      }, this.changePlayersTurn)
-    }
-  }
-  box3() {
-    if (this.state.box3 !== '' || this.state.winner !=='') {
-      return
-    }
-    if(this.state.playersTurn === 'player1'){
-      this.setState(function(){
-        return {
-          box3: 'x'
-        }
-      }, this.changePlayersTurn)
-    } else if(this.state.playersTurn === 'player2'){
-      this.setState(function(){
-        return {
-          box3: 'o'
-        }
-      }, this.changePlayersTurn)
-    }
-  }
-  box4() {
-    if (this.state.box4 !== '' || this.state.winner !=='') {
-      return
-    }
-    if(this.state.playersTurn === 'player1'){
-      this.setState(function(){
-        return {
-          box4: 'x'
-        }
-      }, this.changePlayersTurn)
-    } else if(this.state.playersTurn === 'player2'){
-      this.setState(function(){
-        return {
-          box4: 'o'
-        }
-      }, this.changePlayersTurn)
-    }
-  }
-  box5() {
-    if (this.state.box5 !== '' || this.state.winner !== '') {
-      return
-    }
-    if(this.state.playersTurn === 'player1'){
-      this.setState(function(){
-        return {
-          box5: 'x'
-        }
-      }, this.changePlayersTurn)
-    } else if(this.state.playersTurn === 'player2'){
-      this.setState(function(){
-        return {
-          box5: 'o'
-        }
-      }, this.changePlayersTurn)
-    }
-  }
-  box6() {
-    if (this.state.box6 !== '' || this.state.winner !== '') {
-      return
-    }
-    if(this.state.playersTurn === 'player1'){
-      this.setState(function(){
-        return {
-          box6: 'x'
-        }
-      }, this.changePlayersTurn)
-    } else if(this.state.playersTurn === 'player2'){
-      this.setState(function(){
-        return {
-          box6: 'o'
-        }
-      }, this.changePlayersTurn)
-    }
-  }
-  box7() {
-    if (this.state.box7 !== '' || this.state.winner !=='') {
-      return
-    }
-    if(this.state.playersTurn === 'player1'){
-      this.setState(function(){
-        return {
-          box7: 'x'
-        }
-      }, this.changePlayersTurn)
-    } else if(this.state.playersTurn === 'player2'){
-      this.setState(function(){
-        return {
-          box7: 'o'
-        }
-      }, this.changePlayersTurn)
-    }
-  }
-  box8() {
-    if (this.state.box8 !== '' || this.state.winner !=='') {
-      return
-    }
-    if(this.state.playersTurn === 'player1'){
-      this.setState(function(){
-        return {
-          box8: 'x'
-        }
-      }, this.changePlayersTurn)
-    } else if(this.state.playersTurn === 'player2'){
-      this.setState(function(){
-        return {
-          box8: 'o'
-        }
-      }, this.changePlayersTurn)
-    }
-  }
-  box9() {
-    if (this.state.box9 !== '' || this.state.winner !=='') {
-      return
-    }
-    if(this.state.playersTurn === 'player1'){
-      this.setState(function(){
-        return {
-          box9: 'x'
-        }
-      }, this.changePlayersTurn)
-    } else if(this.state.playersTurn === 'player2'){
-      this.setState(function(){
-        return {
-          box9: 'o'
-        }
-      }, this.changePlayersTurn)
-    }
+    var newState = {};
+    newState[boxId] = this.state.playersTurn === 'player1'
+      ? 'x'
+      : 'o'
+
+    this.setState(function () {
+      return newState
+    }, this.changePlayersTurn);
   }
   checkForWinner () {
     var box1 = this.state.box1;
@@ -241,7 +81,7 @@ class UserInputs extends React.Component {
     var box9 = this.state.box9;
     var winner = false;
 
-    if(box1==='x' && box2==='x' && box3 ==='x'){
+    if(box1 ==='x' && box2 ==='x' && box3 ==='x'){
       winner = true;
       this.setState(function(prevState){
         return {
@@ -402,7 +242,7 @@ class UserInputs extends React.Component {
         playerTwoPoints: 0,
       }
     })
-    this.startOver()
+    this.startOver();
   }
   changePlayersTurn () {
     if (this.checkForWinner() === true) {
@@ -425,8 +265,6 @@ class UserInputs extends React.Component {
     }
 
   }
-
-
   render() {
     return (
       <div>
@@ -435,33 +273,25 @@ class UserInputs extends React.Component {
           {this.state.winner === 'player2' ? 'Winner Pedro' : null}
 
         </div>
-          <div className = 'tie'>{this.state.winner === 'tie' ? 'Tie' : null} </div>
+        <div className = 'tie'>{this.state.winner === 'tie' ? 'Tie' : null} </div>
         <div className='player'> {this.state.playersTurn === 'player1' ? 'JAX' : 'PEDRO'}'s turn </div>
         <GridBoard
-          clickBox1={this.box1}
+          onBoxClick={this.handleBoxClick}
           box1={this.state.box1}
-          clickBox2={this.box2}
           box2={this.state.box2}
-          clickBox3={this.box3}
           box3={this.state.box3}
-          clickBox4={this.box4}
           box4={this.state.box4}
-          clickBox5={this.box5}
           box5={this.state.box5}
-          clickBox6={this.box6}
           box6={this.state.box6}
-          clickBox7={this.box7}
           box7={this.state.box7}
-          clickBox8={this.box8}
           box8={this.state.box8}
-          clickBox9={this.box9}
           box9={this.state.box9}
           playerOnePoints={this.state.playerOnePoints}
           playerTwoPoints={this.state.playerTwoPoints}
         />
         <div className='sbutton'>
-        <button onClick={this.startOver}>New Game</button>
-        <button onClick={this.resetPoints}> Reset Points </button>
+          <button onClick={this.startOver}>New Game</button>
+          <button onClick={this.resetPoints}> Reset Points </button>
         </div>
         <div className='bottom'> Live Long And Pawspurrr</div>
       </div>
