@@ -293,7 +293,7 @@ class UserInputs extends React.Component {
           <button onClick={this.startOver}>New Game</button>
           <button onClick={this.resetPoints}> Reset Points </button>
         </div>
-        <div className='bottom'> Live Long And Pawspurrr</div>
+
       </div>
     )
   }

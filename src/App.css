@@ -6,14 +6,17 @@
 
 .App-header {
   background-image: url('./photo/c.jpg');
+  background-size: 70% 330%;
+
   height: 160px;
-  padding: 20px;
+  padding: 2%;
   color: #24867f;
-  font-size: 50px;
+  font-size: 6vw;
   background-color: #24867f;
   width: 100%;
    text-shadow: -1px 0 black, 0 3px black, 3px 0 black, 0 -1px black;
   margin-top: 0px;
+  margin-bottom: 1%;
 }
 
 
@@ -27,97 +30,83 @@
 
 }
 .main {
-  width: 500px;
+  margin-top: 3%;
+  width: 60%;
   height: 500px;
   margin: 0 auto;
-  margin-top: 3%;
 }
 .top-row {
-  width: 100%;
-  height: 60%;
+  width: 90%;
+  height: 70%;
+  margin: 0 auto;
 }
 .one {
-  width: 31%;
+  width: 30%;
   float: left;
-  height: 50%;
+  height: 40%;
   border-style: solid;
   border-width: 1px;
   background-color: #24867f;
   margin: 1px;
   color: white;
-  font-size: 130px;
+  font-size: 14vw;
+}
 
-}
-.one:focus {
-  background-color: red;
-}
-.middle-row {
-  margin-top: 0px;
-  height: 60%;
-}
-.bottom-row {
-  height: 60%;
-}
 .player{
-  font-size: 30px;
-  margin-top: 30px;
+  font-size: 5vw;
+  margin-top: 3%;
   color:  #24867f;
   font-family: 'Amatic SC', cursive;
 }
 .winner {
   color: #24867f;
-  font-size: 100px;
+  font-size: 8vw;
   background-image: url('./photo/ccc.gif');
   font-family: 'Amatic SC', cursive;
 
 }
 .tie {
   background-image: url('./photo/dog.gif');
-  font-size: 100px;
+  font-size: 8vw;
   color: #24867f;
   font-family: 'Amatic SC', cursive;
-   background-size: 120px 100px;
+   background-size: 10% 90%;
 }
 .sbutton{
-  margin-top: 15%;
-
+  margin-bottom: 100px;
+  text-align: center;
+  margin: 0 auto;
+  bottom: -200px;
 }
 .player1 {
-  height: 200px;
+  height: 200%;
   width: 20%;
   margin-left: 1%;
-  margin-top: -400px;
+  margin-top:-30%;
   background-image: url('./photo/jax.jpg');
   background-repeat: no-repeat;
-  padding-top: 20px;
+  padding-top: 20%;
   font-family: 'Amatic SC', cursive;
-  font-size: 40px;
+  font-size: 4vw;
+  background-size: 95% 77%;
 }
 .sm1 {
   float: left;
-  margin-top: -180px;
+  margin-top: -150%;
 }
 .player2 {
-  height: 250px;
+  height: 250%;
   width: 20%;
   margin-right: 2%;
   float: right;
-  margin-top: -230px;
-  overflow: hidden;
+  margin-top: -20%;
    background-image: url('./photo/pedro.jpg');
   background-repeat:no-repeat;
   font-family: 'Amatic SC', cursive;
-  font-size: 40px;
+  font-size: 4vw;
+  background-size: 95% 75%;
 }
-.player2 .sm2 {
-   margin-top: 200px;
+.sm2 {
+  margin-top: 100%;
 }
-.bottom {
-  background-image: url('./photo/3.jpg');
-  margin-top: 60px;
-  height: 100px;
-  font-size: 90px;
-  font-family: 'Amatic SC', cursive;
-  color: #24867f;
-  text-shadow: -1px 0 black, 0 3px black, 3px 0 black, 0 -1px black;
-}
+
